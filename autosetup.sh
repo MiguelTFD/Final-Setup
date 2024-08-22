@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Repositorio de dotfiles
-repo_url="https://github.com/MiguelTFD/dotfiles.git"
+repo_url="https://github.com/MiguelTFD/final-dotfiles.git"
 
 # Obtener el directorio home del usuario actual
 if [ -n "$SUDO_USER" ]; then
@@ -51,37 +51,17 @@ shopt -u dotglob
 rm -rf "$home_dir/dotfiles"
 echo "Contenido movido y carpeta dotfiles eliminada."
 
-# Lista de paquetes a instalar
+# Lista de paquetes a instalar en el escritorio gnome con debian 12 como distro
 packages=(
-    pulseaudio
-    ntfs-3g
     curl
-    unzip
-    build-essential
     vim
-    xorg
-    i3-wm
-    feh
-    psmisc
-    firefox-esr
-    kitty
-    python3-pil
-    polybar
-    rofi
-    ranger
     neofetch
     openjdk-17-jdk
     maven
     nodejs
     npm
     php
-    lightdm
-    light-locker
-    dunst
-    scrot
-    calcurse
     timeshift
-    picom
 )
 
 # Iterar sobre cada paquete e intentar instalarlo
@@ -92,14 +72,6 @@ done
 
 echo "Proceso de instalación de paquetes completado."
 
-sudo cp -r "$home_dir/.themes/Orchis-Dark-Nord" /usr/share/themes/
-sudo cp -r "$home_dir/.themes/Orchis-Light-Nord" /usr/share/themes/
-
-sudo cp -r "$home_dir/.local/share/wallpapers/NordTheme" /usr/share/wallpapers/
-sudo cp -f "$home_dir/.config/miscellaneous/lightdm/lightdm.conf" /etc/lightdm/
-
-
 curl -sS https://starship.rs/install.sh | sh
-starship preset gruvbox-rainbow -o ~/.config/starship.toml #eliminar esto
 
 echo "Script completado con éxito."
